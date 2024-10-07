@@ -1,5 +1,8 @@
 ---
+import NavBar from "../components/NavBar.astro"
 
+	//Server Only => No usa js para hacer build, HTML plano
+	const name:string = 'Alkapon'
 ---
 
 <html lang="en">
@@ -11,6 +14,26 @@
 		<title>Astro</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+
+		<NavBar>
+		<h1>index</h1>
+
+		<h1>{name.toUpperCase()}</h1>
+		<p class="current-time">Momento actual</p>
+
+		<footer>
+			año 2023
+		</footer>
+		<script>
+			
+			const currentYear:number = new Date().getFullYear();
+
+			const footer = document.querySelector('footer') as HTMLElement;
+			footer.innerText = `año actual :${currentYear}`;
+
+			//ClintSideRendering
+			const currentTime = document.querySelector('#current-time') as HTMLElement;
+			currentTime.innerText = `tiempo: ${ new Date().toLocaleTimeString() }`;
+		</script>
 	</body>
 </html>
